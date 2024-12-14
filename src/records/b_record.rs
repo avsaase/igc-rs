@@ -1,6 +1,6 @@
+use core::fmt;
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
-use std::fmt;
 
 use crate::records::extension::Extendable;
 use crate::util::{ParseError, RawPosition, Time};
@@ -33,7 +33,7 @@ pub struct BRecord<'a> {
     pub fix_valid: FixValid,
     pub pressure_alt: i16,
     pub gps_alt: i16,
-    extension_string: &'a str,
+    pub extension_string: &'a str,
 }
 
 impl<'a> BRecord<'a> {

@@ -1,6 +1,6 @@
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
-use std::fmt;
+use core::fmt;
 
 use crate::util::DisplayOption;
 use crate::util::Manufacturer;

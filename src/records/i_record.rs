@@ -1,6 +1,6 @@
+use core::{fmt, str};
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
-use std::{fmt, str};
 
 use crate::records::extension::ExtensionDefRecord;
 use crate::util::ParseError;
@@ -8,7 +8,7 @@ use crate::util::ParseError;
 #[derive(Clone, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
 pub struct IRecord<'a>(
-    #[cfg_attr(feature = "serde", serde(borrow))] pub ExtensionDefRecord<'a>,
+    #[cfg_attr(feature = "serde", serde(borrow = "'a"))] pub ExtensionDefRecord<'a>,
 );
 
 impl<'a> IRecord<'a> {

@@ -1,4 +1,4 @@
-use std::fmt;
+use core::fmt;
 
 pub struct DisplayOption<T: fmt::Display>(pub Option<T>);
 

@@ -1,15 +1,14 @@
-use std::io;
-use std::num;
+use core::num;
 
 use thiserror::Error;
 
 /// Enumeration of different errors that can occur during parsing
 #[derive(Error, Debug)]
 pub enum ParseError {
+    // #[error(transparent)]
+    // IOError(#[from] std::io::Error),
     #[error(transparent)]
-    IOError(#[from] io::Error),
-    #[error(transparent)]
-    Utf8Error(#[from] std::str::Utf8Error),
+    Utf8Error(#[from] core::str::Utf8Error),
     #[error("Syntax error found")]
     SyntaxError,
     #[error("Non-ASCII characters found")]

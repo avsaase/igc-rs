@@ -1,6 +1,6 @@
+use core::{fmt, str};
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
-use std::{fmt, str};
 
 use crate::util::ParseError;
 
@@ -104,8 +104,12 @@ pub trait Extendable {
 #[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
 pub struct ExtensionDefRecord<'a> {
     pub num_extensions: u8,
+    #[cfg(feature = "std")]
     #[cfg_attr(feature = "serde", serde(borrow))]
     pub extensions: Vec<Extension<'a>>,
+    #[cfg(not(feature = "std"))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    pub extensions: heapless::Vec<Extension<'a>, 10>,
 }
 
 impl<'a> ExtensionDefRecord<'a> {

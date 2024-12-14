@@ -5,6 +5,11 @@
 //! It is intended to be used as an unopinionated base for building higher level data structures
 //! representing traces/tasks/etc..
 
+#![cfg_attr(not(feature = "std"), no_std)]
+
+// #[cfg(all(feature = "std", feature = "heapless"))]
+// compile_error!("features `std` and `heapless` are mutually exclusive");
+
 #[cfg(test)]
 #[macro_use]
 extern crate proptest;

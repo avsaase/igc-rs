@@ -1,6 +1,6 @@
+use core::fmt;
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
-use std::fmt;
 
 use crate::util::{Date, DisplayOption, ParseError, RawPosition, Time};
 
@@ -70,8 +70,12 @@ impl<'a> CRecordDeclaration<'a> {
 impl<'a> fmt::Display for CRecordDeclaration<'a> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let flight_date = match &self.flight_date {
-            None => "000000".to_string(),
-            Some(flight_date) => flight_date.to_string(),
+            None => &Date {
+                day: 0,
+                month: 0,
+                year: 0,
+            },
+            Some(flight_date) => flight_date,
         };
 
         write!(

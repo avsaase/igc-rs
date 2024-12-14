@@ -1,6 +1,6 @@
+use core::{fmt, str};
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
-use std::{fmt, str};
 
 use crate::records::extension::ExtensionDefRecord;
 use crate::util::ParseError;
